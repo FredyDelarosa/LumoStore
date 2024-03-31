@@ -15,7 +15,7 @@
    <children>
       <AnchorPane layoutY="3.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FFF8F1;">
          <children>
-            <Pane layoutY="-6.0" prefHeight="54.0" prefWidth="609.0" style="-fx-background-color: #A45D83;">
+            <Pane fx:id="pane" layoutY="-6.0" prefHeight="54.0" prefWidth="609.0" style="-fx-background-color: #A45D83;">
                <children>
                   <Button layoutX="32.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#MenuButton" prefHeight="32.0" prefWidth="83.0" style="-fx-background-color: #A45D83;" text="Menú" textFill="WHITE" underline="true">
                      <font>
