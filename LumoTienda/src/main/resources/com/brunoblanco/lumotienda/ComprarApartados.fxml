@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.brunoblanco.lumotienda.Controladores.ComprarApartadosControlador">
+   <children>
+      <AnchorPane fx:id="anchor" layoutY="2.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FFF8F1;">
+         <children>
+            <Pane fx:id="borde" layoutY="-6.0" prefHeight="54.0" prefWidth="609.0" style="-fx-background-color: #A45D83;">
+               <children>
+                  <Button layoutX="32.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#menuButton" prefHeight="32.0" prefWidth="83.0" style="-fx-background-color: #A45D83;" text="Menú" textFill="WHITE" underline="true">
+                     <font>
+                        <Font name="Consolas" size="13.0" />
+                     </font>
+                  </Button>
+               </children>
+            </Pane>
+            <Pane fx:id="Etiqueta" layoutX="365.0" layoutY="134.0" prefHeight="26.0" prefWidth="209.0" style="-fx-background-color: #FFCDE8;">
+               <children>
+                  <Text fx:id="TextPane" layoutX="10.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingrese el nombre del producto" wrappingWidth="188.837890625">
+                     <font>
+                        <Font name="Berlin Sans FB" size="14.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <TextArea layoutX="365.0" layoutY="160.0" onMouseClicked="#nombreText" prefHeight="40.0" prefWidth="209.0" style="-fx-border-color: #A45D83;" />
+            <Pane fx:id="Etiqueta2" layoutX="365.0" layoutY="217.0" prefHeight="26.0" prefWidth="209.0" style="-fx-background-color: #FFCDE8;">
+               <children>
+                  <Text fx:id="TextPane2" layoutX="10.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingrese la cantidad" wrappingWidth="188.837890625">
+                     <font>
+                        <Font name="Berlin Sans FB" size="18.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <TextArea layoutX="365.0" layoutY="243.0" onMouseClicked="#cantidadText" prefHeight="40.0" prefWidth="209.0" style="-fx-border-color: #A45D83;" />
+            <Label fx:id="TituloText" layoutX="62.0" layoutY="70.0" prefHeight="48.0" prefWidth="264.0" text="Productos Apartados" textFill="#bb3e81">
+               <font>
+                  <Font name="Times New Roman" size="30.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="img" fitHeight="191.0" fitWidth="158.0" layoutX="56.0" layoutY="138.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Imagenes/Carrito.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="img2" fitHeight="150.0" fitWidth="200.0" layoutX="139.0" layoutY="208.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Imagenes/cajarosa.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
