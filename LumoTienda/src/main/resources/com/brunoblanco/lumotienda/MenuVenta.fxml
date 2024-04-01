@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.brunoblanco.lumotienda.Controladores.MenuVentaControlador">
+   <children>
+      <AnchorPane fx:id="anchor" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FFF8F1;">
+         <children>
+            <Button layoutX="53.0" layoutY="103.0" mnemonicParsing="false" onMouseClicked="#AgregarButton" prefHeight="48.0" prefWidth="174.0" style="-fx-background-color: #FFCDCD;" text="Agregar Venta" textFill="#bb3e81">
+               <font>
+                  <Font name="Comic Sans MS" size="16.0" />
+               </font>
+            </Button>
+            <Button layoutX="53.0" layoutY="285.0" mnemonicParsing="false" onMouseClicked="#BuscarButton" prefHeight="48.0" prefWidth="174.0" style="-fx-background-color: #FFCDCD;" text="Buscar Venta" textFill="#bb3e81">
+               <font>
+                  <Font name="Comic Sans MS" size="16.0" />
+               </font>
+            </Button>
+            <Button layoutX="53.0" layoutY="224.0" mnemonicParsing="false" onMouseClicked="#ActualizarButton" prefHeight="48.0" prefWidth="174.0" style="-fx-background-color: #FFCDCD;" text="Actualizar Venta" textFill="#bb3e81">
+               <font>
+                  <Font name="Comic Sans MS" size="16.0" />
+               </font>
+            </Button>
+            <Button layoutX="53.0" layoutY="161.0" mnemonicParsing="false" onMouseClicked="#EliminarButton" prefHeight="48.0" prefWidth="174.0" style="-fx-background-color: #FFCDCD;" text="Eliminar Venta" textFill="#bb3e81">
+               <font>
+                  <Font name="Comic Sans MS" size="16.0" />
+               </font>
+            </Button>
+            <Pane fx:id="pane" prefHeight="54.0" prefWidth="610.0" style="-fx-background-color: #A45D83;">
+               <children>
+                  <Button layoutX="52.0" layoutY="11.0" mnemonicParsing="false" onMouseClicked="#MenuButton" prefHeight="32.0" prefWidth="83.0" style="-fx-background-color: #A45D83;" text="Menú" textFill="WHITE" underline="true">
+                     <font>
+                        <Font name="Consolas" size="13.0" />
+                     </font>
+                  </Button>
+               </children>
+            </Pane>
+            <Label fx:id="VentaText" layoutX="366.0" layoutY="72.0" prefHeight="48.0" prefWidth="142.0" text="VENTA" textAlignment="CENTER" textFill="#bb3e81">
+               <font>
+                  <Font name="Times New Roman" size="37.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="img" fitHeight="215.0" fitWidth="297.0" layoutX="282.0" layoutY="127.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Imagenes/img8.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
