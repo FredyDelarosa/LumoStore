@@ -38,22 +38,70 @@ public class MenuVentaControlador {
 
     @FXML
     void ActualizarButton(MouseEvent event) {
-
+        Stage stage = new Stage();
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("ActualizarVentas.fxml"));
+        try {
+            Pane root = fxmlLoader.load();
+            Scene scene= new Scene(root);
+            stage.setTitle("Actualizar Ventas");
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        Node source = (Node) event.getSource();
+        stage = (Stage) source.getScene().getWindow();stage.close();
     }
 
     @FXML
     void AgregarButton(MouseEvent event) {
-
+        Stage stage = new Stage();
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("AgregarVentas.fxml"));
+        try {
+            Pane root = fxmlLoader.load();
+            Scene scene= new Scene(root);
+            stage.setTitle("Agregar Ventas");
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        Node source = (Node) event.getSource();
+        stage = (Stage) source.getScene().getWindow();stage.close();
     }
 
     @FXML
     void BuscarButton(MouseEvent event) {
-
+        Stage stage = new Stage();
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("BuscarVentas.fxml"));
+        try {
+            Pane root = fxmlLoader.load();
+            Scene scene= new Scene(root);
+            stage.setTitle("Buscar Ventas");
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        Node source = (Node) event.getSource();
+        stage = (Stage) source.getScene().getWindow();stage.close();
     }
 
     @FXML
     void EliminarButton(MouseEvent event) {
-
+        Stage stage = new Stage();
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("EliminarVentas.fxml"));
+        try {
+            Pane root = fxmlLoader.load();
+            Scene scene= new Scene(root);
+            stage.setTitle("Eliminar Ventas");
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        Node source = (Node) event.getSource();
+        stage = (Stage) source.getScene().getWindow();stage.close();
     }
 
     @FXML
