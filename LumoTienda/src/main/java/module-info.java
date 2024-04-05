@@ -6,4 +6,6 @@ module com.brunoblanco.lumotienda {
 
     opens com.brunoblanco.lumotienda to javafx.fxml;
     exports com.brunoblanco.lumotienda;
+    exports com.brunoblanco.lumotienda.Controladores;
+    opens com.brunoblanco.lumotienda.Controladores to javafx.fxml;
 }
