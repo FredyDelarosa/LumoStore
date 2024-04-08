@@ -1,25 +1,48 @@
 package com.brunoblanco.lumotienda.Clases;
 
-import java.util.List;
+import java.util.ArrayList;
 
-public class InventarioRopa implements Inventario {
-    private List<Producto> inventario;
+public class InventarioRopa{
+    private ArrayList<Producto> productos = new ArrayList<>();
 
-    public InventarioRopa(List<Producto> inventario) {
-        this.inventario = inventario;
+    public ArrayList<Producto> getProductos() {
+        return productos;
     }
 
-    public void agregarProducto(Producto producto){
-        inventario.add(producto);
+    public boolean agregarProducto(Producto producto){
+        return productos.add(producto);
     }
-
-    public void mostrarInventario() {
-        for (Producto producto : inventario) {
-            System.out.println(producto.getDescripcion());
+    public boolean eliminarProducto(String nombre){
+        boolean eliminado = false;
+        for (Producto i:productos){
+            if (nombre.equals(i.getNombre())){
+                productos.remove(i);
+                eliminado = true;
+                break;
+            }
         }
+        return eliminado;
     }
 
-    public List<Producto> getInventario() {
-        return inventario;
+    public Producto buscarProductoNombre(String nombre){
+        Producto productoBuscado = null;
+        for (Producto i:productos){
+            if (nombre.equals(i.getNombre())){
+                productoBuscado = i;
+                break;
+            }
+        }
+        return productoBuscado;
+    }
+
+    public Producto buscarProductoCategoria(String categoria){
+        Producto productoBuscado = null;
+        for (Producto i:productos){
+            if (categoria.equals(i.getCategoria())){
+                productoBuscado = i;
+                break;
+            }
+        }
+        return productoBuscado;
     }
 }
