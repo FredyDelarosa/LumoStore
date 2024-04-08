@@ -10,6 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
+<?import javafx.scene.control.TextField?>
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.brunoblanco.lumotienda.Controladores.EliminarProductosControlador">
    <children>
       <AnchorPane fx:id="Anchor" layoutX="3.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FFF8F1;">
@@ -37,7 +38,7 @@
                   </Text>
                </children>
             </Pane>
-            <TextArea layoutX="348.0" layoutY="248.0" onMouseClicked="#EliminarProductoText" prefHeight="40.0" prefWidth="209.0" style="-fx-border-color: #A45D83;" />
+            <TextField fx:id="nombreTxt" layoutX="348.0" layoutY="248.0" prefHeight="40.0" prefWidth="209.0" style="-fx-border-color: #A45D83;" />
             <ImageView fx:id="img" fitHeight="192.0" fitWidth="252.0" layoutX="41.0" layoutY="160.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../Imagenes/img5.PNG" />

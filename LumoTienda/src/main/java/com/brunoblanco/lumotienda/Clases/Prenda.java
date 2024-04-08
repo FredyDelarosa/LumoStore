@@ -8,7 +8,6 @@ public class Prenda extends Producto{
         super(nombre, precio, cantidad, categoria);
     }
 
-    @Override
     public String getDescripcion() {
         return "Prenda: " + nombre + ", Precio: $" + precio + " Categoria: " + categoria + " Cantidad: " + cantidad;
     }

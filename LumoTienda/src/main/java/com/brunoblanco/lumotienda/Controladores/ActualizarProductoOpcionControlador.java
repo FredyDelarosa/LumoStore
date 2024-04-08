@@ -4,12 +4,15 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.brunoblanco.lumotienda.Clases.InventarioRopa;
+import com.brunoblanco.lumotienda.Clases.Producto;
 import com.brunoblanco.lumotienda.HelloApplication;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -18,11 +21,14 @@ import javafx.stage.Stage;
 
 public class ActualizarProductoOpcionControlador {
 
+    //cambiar datos
     @FXML
     private ResourceBundle resources;
 
     @FXML
     private URL location;
+    @FXML
+    private TextField nuevoDatoTxt;
 
     @FXML
     private Pane Etiqueta;
@@ -41,21 +47,31 @@ public class ActualizarProductoOpcionControlador {
 
     @FXML
     private Pane pane;
+    private String nombreProducto;
+    private InventarioRopa inventarioRopa;
 
-    @FXML
-    void CantidadButton(MouseEvent event) {
+    public void setInventarioRopa(InventarioRopa inventarioRopa) {
+        this.inventarioRopa = inventarioRopa;
+    }
 
+    public void setNombreProducto(String nombreProducto) {
+        this.nombreProducto = nombreProducto;
     }
 
     @FXML
-    void CategoriaButton(MouseEvent event) {
-
+    void actualizarNombreButton() {
+        inventarioRopa = HelloApplication.getInventarioRopa();
+        String nuevoDato = nuevoDatoTxt.getText();
+        Producto producto = inventarioRopa.buscarProductoNombre(nombreProducto);
+        for (Producto i: inventarioRopa.getProductos()){
+            if (nombreProducto.equals(i.getNombre())){
+                i.setNombre(nuevoDato);
+                System.out.println(producto.toString());
+            }
+        }
     }
 
-    @FXML
-    void EtiquetaTextArea(MouseEvent event) {
 
-    }
 
     @FXML
     void MenuButton(MouseEvent event) {
@@ -74,14 +90,43 @@ public class ActualizarProductoOpcionControlador {
         stage = (Stage) source.getScene().getWindow();stage.close();
     }
 
-    @FXML
-    void NombreButton(MouseEvent event) {
 
+    @FXML
+    void CantidadButton(MouseEvent event){
+        inventarioRopa = HelloApplication.getInventarioRopa();
+        int nuevoDato = Integer.parseInt(nuevoDatoTxt.getText());
+        Producto producto = inventarioRopa.buscarProductoNombre(nombreProducto);
+        for (Producto i: inventarioRopa.getProductos()){
+            if (nombreProducto.equals(i.getNombre())){
+                i.setCantidad(nuevoDato);
+                System.out.println(producto.toString());
+            }
+        }
+    }
+    @FXML
+    void CategoriaButton(MouseEvent event){
+        inventarioRopa = HelloApplication.getInventarioRopa();
+        String nuevoDato = nuevoDatoTxt.getText();
+        Producto producto = inventarioRopa.buscarProductoNombre(nombreProducto);
+        for (Producto i: inventarioRopa.getProductos()){
+            if (nombreProducto.equals(i.getNombre())){
+                i.setCategoria(nuevoDato);
+                System.out.println(producto.toString());
+            }
+        }
     }
 
     @FXML
     void PrecioButton(MouseEvent event) {
-
+        inventarioRopa = HelloApplication.getInventarioRopa();
+        double nuevoDato = Double.parseDouble(nuevoDatoTxt.getText());
+        Producto producto = inventarioRopa.buscarProductoNombre(nombreProducto);
+        for (Producto i: inventarioRopa.getProductos()){
+            if (nombreProducto.equals(i.getNombre())){
+                i.setPrecio(nuevoDato);
+                System.out.println(producto.toString());
+            }
+        }
     }
 
     @FXML

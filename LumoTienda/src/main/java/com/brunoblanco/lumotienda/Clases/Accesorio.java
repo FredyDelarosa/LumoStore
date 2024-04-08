@@ -6,7 +6,6 @@ public class Accesorio extends Producto {
         super(nombre, precio, cantidad, categoria);
     }
 
-    @Override
     public String getDescripcion() {
         return "Accesorio: " + nombre + ", Precio: $" + precio + " Categoria: " + categoria + " Cantidad: " + cantidad;
     }

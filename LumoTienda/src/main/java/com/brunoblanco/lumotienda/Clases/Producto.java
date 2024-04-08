@@ -1,6 +1,7 @@
 package com.brunoblanco.lumotienda.Clases;
 
 public class Producto {
+
     public String nombre;
     public double precio;
     public Integer cantidad;
@@ -57,7 +58,6 @@ public class Producto {
         infoProducto.append("Categoria: ").append(categoria).append("\n");
         return infoProducto.toString();
     }
-
     @Override
     public String toString() {
         return "Producto{" +

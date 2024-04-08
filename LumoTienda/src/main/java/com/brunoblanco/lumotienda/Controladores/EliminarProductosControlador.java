@@ -4,12 +4,14 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.brunoblanco.lumotienda.Clases.InventarioRopa;
 import com.brunoblanco.lumotienda.HelloApplication;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -19,11 +21,14 @@ import javafx.stage.Stage;
 
 public class EliminarProductosControlador {
 
+    //eliminar un producto
     @FXML
     private ResourceBundle resources;
 
     @FXML
     private URL location;
+    @FXML
+    private TextField nombreTxt;
 
     @FXML
     private AnchorPane Anchor;
@@ -45,12 +50,13 @@ public class EliminarProductosControlador {
 
     @FXML
     void BtnEliminar(MouseEvent event) {
+        InventarioRopa inventarioRopa = HelloApplication.getInventarioRopa();
 
-    }
-
-    @FXML
-    void EliminarProductoText(MouseEvent event) {
-
+        String nombreEliminar = nombreTxt.getText();
+        boolean eliminado = inventarioRopa.eliminarProducto(nombreEliminar);
+        if (eliminado){
+            System.out.println("Si se elimino");
+        }
     }
 
     @FXML

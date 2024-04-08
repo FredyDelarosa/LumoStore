@@ -50,6 +50,7 @@ public class ActualizarProductosControlador {
 
     @FXML
     void BtnActualizar(MouseEvent event) {
+        String nombre = EtiquetaTextArea.getText();
         Stage stage = new Stage();
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("ActualizarProductoOpcion.fxml"));
         try {
@@ -57,12 +58,17 @@ public class ActualizarProductosControlador {
             Scene scene= new Scene(root);
             stage.setTitle("Proveedor");
             stage.setScene(scene);
+
+            ActualizarProductoOpcionControlador controlador = fxmlLoader.getController();
+            controlador.setNombreProducto(nombre);
+
             stage.show();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
         Node source = (Node) event.getSource();
-        stage = (Stage) source.getScene().getWindow();stage.close();
+        stage = (Stage) source.getScene().getWindow();
+        stage.close();
     }
 
     @FXML

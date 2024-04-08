@@ -3,7 +3,7 @@ package com.brunoblanco.lumotienda.Clases;
 import java.util.ArrayList;
 
 public class InventarioRopa{
-    private ArrayList<Producto> productos = new ArrayList<>();
+    private ArrayList <Producto> productos = new ArrayList<>();
 
     public ArrayList<Producto> getProductos() {
         return productos;
@@ -23,7 +23,6 @@ public class InventarioRopa{
         }
         return eliminado;
     }
-
     public Producto buscarProductoNombre(String nombre){
         Producto productoBuscado = null;
         for (Producto i:productos){
@@ -34,7 +33,6 @@ public class InventarioRopa{
         }
         return productoBuscado;
     }
-
     public Producto buscarProductoCategoria(String categoria){
         Producto productoBuscado = null;
         for (Producto i:productos){

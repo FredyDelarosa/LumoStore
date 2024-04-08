@@ -4,17 +4,29 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.brunoblanco.lumotienda.Clases.InventarioRopa;
+import com.brunoblanco.lumotienda.Clases.Producto;
 import com.brunoblanco.lumotienda.HelloApplication;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+//para agregar productos
 public class AgregarProductosControlador {
+    @FXML
+    private TextField nombreTxt;
+    @FXML
+    private TextField precioTxt;
+    @FXML
+    private TextField categoriaTxt;
+    @FXML
+    private TextField cantidadTxt;
 
     @FXML
     private ResourceBundle resources;
@@ -29,18 +41,18 @@ public class AgregarProductosControlador {
     private Pane pane;
 
     @FXML
-    void BtnAgregar(MouseEvent event) {
-
-    }
-
-    @FXML
-    void CantidadText(MouseEvent event) {
-
-    }
-
-    @FXML
-    void CategoriaText(MouseEvent event) {
-
+    void agregarProduct(MouseEvent event) {
+        InventarioRopa inventarioRopa = HelloApplication.getInventarioRopa();
+        String nombre = nombreTxt.getText();
+        double precio = Double.parseDouble(precioTxt.getText());
+        int cantidad = Integer.parseInt(cantidadTxt.getText());
+        String categoria = categoriaTxt.getText();
+        Producto producto = new Producto(nombre,precio,cantidad,categoria);
+        boolean agregado = inventarioRopa.agregarProducto(producto);
+        if (agregado){
+            System.out.println("Agregado");
+            System.out.println(producto.toString());
+        }
     }
 
     @FXML
@@ -58,16 +70,6 @@ public class AgregarProductosControlador {
         }
         Node source = (Node) event.getSource();
         stage = (Stage) source.getScene().getWindow();stage.close();
-    }
-
-    @FXML
-    void NombreText(MouseEvent event) {
-
-    }
-
-    @FXML
-    void PrecioText(MouseEvent event) {
-
     }
 
     @FXML
