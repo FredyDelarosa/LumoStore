@@ -2,14 +2,13 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.brunoblanco.lumotienda.Controladores.AgregarVentasControlador">
    <children>
@@ -33,18 +32,18 @@
                   </Text>
                </children>
             </Pane>
-            <TextArea layoutX="365.0" layoutY="83.0" onMouseClicked="#nombreText" prefHeight="40.0" prefWidth="209.0" style="-fx-border-color: #A45D83;" />
-            <Pane fx:id="Etiqueta2" layoutX="365.0" layoutY="163.0" prefHeight="26.0" prefWidth="209.0" style="-fx-background-color: #FFCDE8;">
+            <TextField fx:id="nombreTxt" layoutX="365.0" layoutY="81.0" prefHeight="40.0" prefWidth="209.0" style="-fx-border-color: #A45D83;" />
+            <Pane fx:id="Etiqueta2" layoutX="365.0" layoutY="133.0" prefHeight="26.0" prefWidth="209.0" style="-fx-background-color: #FFCDE8;">
                <children>
-                  <Text fx:id="Etiqueta2Text" layoutX="10.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingrese el nombre del proveedor" wrappingWidth="188.837890625">
+                  <Text fx:id="Etiqueta2Text" layoutX="10.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingrese el nombre del cliente" wrappingWidth="188.837890625">
                      <font>
                         <Font name="Berlin Sans FB" size="14.0" />
                      </font>
                   </Text>
                </children>
             </Pane>
-            <TextArea layoutX="365.0" layoutY="189.0" onMouseClicked="#proveedorText" prefHeight="40.0" prefWidth="209.0" style="-fx-border-color: #A45D83;" />
-            <Pane fx:id="Etiqueta3" layoutX="365.0" layoutY="266.0" prefHeight="26.0" prefWidth="209.0" style="-fx-background-color: #FFCDE8;">
+            <TextField fx:id="nombrecTxt" layoutX="365.0" layoutY="159.0" prefHeight="40.0" prefWidth="209.0" style="-fx-border-color: #A45D83;" />
+            <Pane fx:id="Etiqueta3" layoutX="365.0" layoutY="212.0" prefHeight="26.0" prefWidth="209.0" style="-fx-background-color: #FFCDE8;">
                <children>
                   <Text fx:id="Etiqueta3Text" layoutX="10.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingrese la cantidad" wrappingWidth="188.837890625">
                      <font>
@@ -53,8 +52,8 @@
                   </Text>
                </children>
             </Pane>
-            <TextArea layoutX="365.0" layoutY="293.0" onMouseClicked="#cantidadText" prefHeight="40.0" prefWidth="209.0" style="-fx-border-color: #A45D83;" />
-            <Label fx:id="ApartarText" layoutX="60.0" layoutY="68.0" prefHeight="48.0" prefWidth="220.0" text="Apartar Producto" textFill="#bb3e81">
+            <TextField fx:id="cantidadTxt" layoutX="364.0" layoutY="238.0" prefHeight="40.0" prefWidth="209.0" style="-fx-border-color: #A45D83;" />
+            <Label fx:id="ApartarText" layoutX="60.0" layoutY="68.0" prefHeight="48.0" prefWidth="220.0" text="Apartar Ventas" textFill="#bb3e81">
                <font>
                   <Font name="Times New Roman" size="30.0" />
                </font>
@@ -64,6 +63,11 @@
                   <Image url="@../../../Imagenes/Logo.jpeg" />
                </image>
             </ImageView>
+            <Button fx:id="BtnAgregar" layoutX="406.0" layoutY="291.0" mnemonicParsing="false" onMouseClicked="#agregarVenta" prefHeight="33.0" prefWidth="126.0" style="-fx-background-color: #FFCDCD;" text="Agregar" textFill="#bb3e81">
+               <font>
+                  <Font name="Comic Sans MS" size="16.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </children>
