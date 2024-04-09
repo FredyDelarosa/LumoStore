@@ -88,7 +88,7 @@ public class AgregarVentasControlador {
     @FXML
     void menuButton(MouseEvent event) {
         Stage stage = new Stage();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("MenúProductos.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("MenuVenta.fxml"));
         try {
             Pane root = fxmlLoader.load();
             Scene scene= new Scene(root);

@@ -8,22 +8,21 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.brunoblanco.lumotienda.Controladores.ActualizarVentasOpcionControlador">
    <children>
       <AnchorPane fx:id="anchor" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FFF8F1;">
          <children>
-            <Button layoutX="53.0" layoutY="261.0" mnemonicParsing="false" onMouseClicked="#CantidadButton" prefHeight="48.0" prefWidth="181.0" style="-fx-background-color: #FFCDCD;" text="Cantidad vendida" textFill="#bb3e81">
+            <Button fx:id="cantidadBtn" layoutX="53.0" layoutY="261.0" mnemonicParsing="false" onMouseClicked="#CantidadButton" prefHeight="48.0" prefWidth="181.0" style="-fx-background-color: #FFCDCD;" text="Cantidad vendida" textFill="#bb3e81">
                <font>
                   <Font name="Comic Sans MS" size="16.0" />
                </font>
             </Button>
-            <Button layoutX="53.0" layoutY="200.0" mnemonicParsing="false" onMouseClicked="#NombreProductoButton" prefHeight="48.0" prefWidth="181.0" style="-fx-background-color: #FFCDCD;" text="Nombre del producto" textFill="#bb3e81">
+            <Button fx:id="nombreProductoBtn" layoutX="53.0" layoutY="200.0" mnemonicParsing="false" onMouseClicked="#NombreProductoButton" prefHeight="48.0" prefWidth="181.0" style="-fx-background-color: #FFCDCD;" text="Nombre del producto" textFill="#bb3e81">
                <font>
                   <Font name="Comic Sans MS" size="16.0" />
                </font>
             </Button>
-            <Button layoutX="53.0" layoutY="137.0" mnemonicParsing="false" onMouseClicked="#NombreButton" prefHeight="48.0" prefWidth="181.0" style="-fx-background-color: #FFCDCD;" text="Nombre del cliente" textFill="#bb3e81">
+            <Button fx:id="nombreClienteBtn" layoutX="53.0" layoutY="137.0" mnemonicParsing="false" onMouseClicked="#NombreButton" prefHeight="48.0" prefWidth="181.0" style="-fx-background-color: #FFCDCD;" text="Nombre del cliente" textFill="#bb3e81">
                <font>
                   <Font name="Comic Sans MS" size="16.0" />
                </font>
@@ -51,7 +50,7 @@
                   </Text>
                </children>
             </Pane>
-            <TextArea layoutX="332.0" layoutY="245.0" onMouseClicked="#DatoTextArea" prefHeight="40.0" prefWidth="209.0" style="-fx-border-color: #A45D83;" />
+            <TextArea fx:id="nuevoDatoTxt" layoutX="332.0" layoutY="245.0" onMouseClicked="#DatoTextArea" prefHeight="40.0" prefWidth="209.0" style="-fx-border-color: #A45D83;" />
             <Label fx:id="SubLabel" layoutX="305.0" layoutY="113.0" prefHeight="48.0" prefWidth="263.0" text="Seleccione el dato a actualizar" textFill="#bb3e81">
                <font>
                   <Font name="Times New Roman" size="20.0" />

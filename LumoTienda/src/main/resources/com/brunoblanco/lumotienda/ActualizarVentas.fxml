@@ -10,7 +10,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.brunoblanco.lumotienda.Controladores.ActualizarVentasControlador">
    <children>
       <AnchorPane layoutX="4.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FFF8F1;">
@@ -29,21 +28,26 @@
                   <Font name="Times New Roman" size="32.0" />
                </font>
             </Label>
-            <Pane fx:id="Etiqueta" layoutX="330.0" layoutY="148.0" prefHeight="82.0" prefWidth="209.0" style="-fx-background-color: #FFCDE8;">
+            <Pane fx:id="Etiqueta" layoutX="330.0" layoutY="132.0" prefHeight="82.0" prefWidth="209.0" style="-fx-background-color: #FFCDE8;">
                <children>
-                  <Text fx:id="EtiquetaText" layoutX="10.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingrese el ID de la venta a actualizar" textAlignment="CENTER" wrappingWidth="188.837890625">
+                  <Text fx:id="EtiquetaText" layoutX="10.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingrese el nombre del cliente de la venta a actualizar" textAlignment="CENTER" wrappingWidth="188.837890625">
                      <font>
                         <Font name="Berlin Sans FB" size="22.0" />
                      </font>
                   </Text>
                </children>
             </Pane>
-            <TextArea layoutX="330.0" layoutY="230.0" onMouseClicked="#IdText" prefHeight="40.0" prefWidth="209.0" style="-fx-border-color: #A45D83;" />
+            <TextArea fx:id="EtiquetaTextArea" layoutX="330.0" layoutY="222.0" prefHeight="40.0" prefWidth="209.0" style="-fx-border-color: #A45D83;" />
             <ImageView fx:id="img" fitHeight="183.0" fitWidth="269.0" layoutX="33.0" layoutY="132.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../Imagenes/img9.jpg" />
                </image>
             </ImageView>
+            <Button fx:id="BtnActualizar" layoutX="371.0" layoutY="269.0" mnemonicParsing="false" onMouseClicked="#BtnActualizar" prefHeight="33.0" prefWidth="126.0" style="-fx-background-color: #FFCDCD;" text="Actualizar" textFill="#bb3e81">
+               <font>
+                  <Font name="Comic Sans MS" size="16.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </children>
