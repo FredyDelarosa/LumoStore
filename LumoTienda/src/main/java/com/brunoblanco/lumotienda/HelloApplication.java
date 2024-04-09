@@ -2,6 +2,7 @@ package com.brunoblanco.lumotienda;
 
 import com.brunoblanco.lumotienda.Clases.InventarioRopa;
 import com.brunoblanco.lumotienda.Clases.InventarioVenta;
+import com.brunoblanco.lumotienda.Clases.InventarioApartar;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -13,11 +14,13 @@ public class HelloApplication extends Application {
 
     private static InventarioRopa inventarioRopa = new InventarioRopa();
     private static InventarioVenta inventarioVenta = new InventarioVenta();
+    private static InventarioApartar inventarioApartar = new InventarioApartar();
 
     public static InventarioRopa getInventarioRopa() {
         return inventarioRopa;
     }
     public static InventarioVenta getInventarioVenta(){return inventarioVenta;}
+    public static InventarioApartar getInventarioApartar(){return inventarioApartar;}
 
     @Override
     public void start(Stage stage) throws IOException {
