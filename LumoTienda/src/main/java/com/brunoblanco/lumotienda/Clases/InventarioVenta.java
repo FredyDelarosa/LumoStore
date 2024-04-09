@@ -13,10 +13,10 @@ public class InventarioVenta {
         return ventas.add(venta);
     }
 
-    public boolean eliminarVenta(String nombre){
+    public boolean eliminarVenta(String nombrec){
         boolean eliminado = false;
         for (Venta i:ventas){
-            if (nombre.equals(i.getNombrec())){
+            if (nombrec.equals(i.getNombrec())){
                 ventas.remove(i);
                 eliminado = true;
                 break;
