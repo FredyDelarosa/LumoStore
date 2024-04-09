@@ -38,6 +38,15 @@ public class Venta {
         this.cantidad = cantidad;
     }
 
+    public String imprimirVenta(){
+        StringBuilder infoVenta = new StringBuilder();
+
+        infoVenta.append("Nombre del Cliente: ").append(nombrec).append("\n");
+        infoVenta.append("Nombre del Producto: ").append(nombrep).append("\n");
+        infoVenta.append("Cantidad: ").append(cantidad).append("\n");
+        return infoVenta.toString();
+    }
+
     @Override
     public String toString() {
         return "Venta{" +
