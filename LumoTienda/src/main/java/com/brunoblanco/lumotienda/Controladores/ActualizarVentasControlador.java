@@ -70,7 +70,7 @@ public class ActualizarVentasControlador {
     @FXML
     void MenuButton(MouseEvent event) {
         Stage stage = new Stage();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("MenuVentas.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("MenuVenta.fxml"));
         try {
             Pane root = fxmlLoader.load();
             Scene scene= new Scene(root);
