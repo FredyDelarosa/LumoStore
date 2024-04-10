@@ -19,6 +19,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 public class ApartarProductosControlador {
 
@@ -73,15 +75,24 @@ public class ApartarProductosControlador {
         Apartar apartar = new Apartar(nombre, nombrep, cantidad);
         boolean agregado = inventarioApartar.apartarProducto(apartar);
         if (agregado){
-            System.out.println("Agregado");
-            System.out.println(apartar.toString());
+            Alert alerta = new Alert(AlertType.INFORMATION);
+            alerta.setTitle("Confirmación de agregado");
+            alerta.setHeaderText(null);
+            alerta.setContentText("Producto apartados");
+            alerta.showAndWait();
+        }else {
+            Alert alertaError = new Alert(AlertType.ERROR);
+            alertaError.setTitle("Error de Agregado");
+            alertaError.setHeaderText(null);
+            alertaError.setContentText("No se pudo apartar el producto.");
+            alertaError.showAndWait();
         }
     }
 
     @FXML
     void menuButton(MouseEvent event) {
         Stage stage = new Stage();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("MenuProveedot.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("MenuProveedor.fxml"));
         try {
             Pane root = fxmlLoader.load();
             Scene scene= new Scene(root);

@@ -18,6 +18,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+
 
 public class EliminarProductosControlador {
 
@@ -55,7 +58,17 @@ public class EliminarProductosControlador {
         String nombreEliminar = nombreTxt.getText();
         boolean eliminado = inventarioRopa.eliminarProducto(nombreEliminar);
         if (eliminado){
-            System.out.println("Si se elimino");
+            Alert alerta = new Alert(AlertType.INFORMATION);
+            alerta.setTitle("Producto Eliminado");
+            alerta.setHeaderText(null);
+            alerta.setContentText("El producto ha sido eliminado correctamente.");
+            alerta.showAndWait();
+        }else{
+            Alert alertaError = new Alert(AlertType.ERROR);
+            alertaError.setTitle("Error al Eliminar");
+            alertaError.setHeaderText(null);
+            alertaError.setContentText("No se pudo encontrar y eliminar el producto.");
+            alertaError.showAndWait();
         }
     }
 

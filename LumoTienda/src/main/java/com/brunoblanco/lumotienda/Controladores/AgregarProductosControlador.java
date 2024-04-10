@@ -16,6 +16,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 //para agregar productos
 public class AgregarProductosControlador {
@@ -50,8 +52,17 @@ public class AgregarProductosControlador {
         Producto producto = new Producto(nombre,precio,cantidad,categoria);
         boolean agregado = inventarioRopa.agregarProducto(producto);
         if (agregado){
-            System.out.println("Agregado");
-            System.out.println(producto.toString());
+            Alert alerta = new Alert(AlertType.INFORMATION);
+            alerta.setTitle("Confirmación de agregado");
+            alerta.setHeaderText(null);
+            alerta.setContentText("Producto agregado correctamente");
+            alerta.showAndWait();
+        }else{
+            Alert alertaError = new Alert(AlertType.ERROR);
+            alertaError.setTitle("Error de Agregado");
+            alertaError.setHeaderText(null);
+            alertaError.setContentText("No se pudo agregar el producto.");
+            alertaError.showAndWait();
         }
     }
 

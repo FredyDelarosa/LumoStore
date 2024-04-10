@@ -20,6 +20,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 public class ActualizarVentasOpcionControlador {
 
@@ -69,11 +71,27 @@ public class ActualizarVentasOpcionControlador {
         inventarioVenta = HelloApplication.getInventarioVenta();
         int nuevoDato = Integer.parseInt(nuevoDatoTxt.getText());
         Venta venta = inventarioVenta.buscarVenta(nombreCliente);
+        boolean actualizado = false;
         for (Venta i: inventarioVenta.getVentas()){
             if (nombreCliente.equals(i.getNombrec())){
                 i.setCantidad(nuevoDato);
                 System.out.println(venta.toString());
+                actualizado=true;
+                break;
             }
+        }
+        if (actualizado) {
+            Alert alerta = new Alert(AlertType.INFORMATION);
+            alerta.setTitle("Actualización Exitosa");
+            alerta.setHeaderText(null);
+            alerta.setContentText("La cantidad de la venta ha sido actualizado correctamente.");
+            alerta.showAndWait();
+        } else {
+            Alert alertaError = new Alert(AlertType.ERROR);
+            alertaError.setTitle("Error en la Actualización");
+            alertaError.setHeaderText(null);
+            alertaError.setContentText("No se encontró la venta para actualizar.");
+            alertaError.showAndWait();
         }
     }
 
@@ -104,11 +122,27 @@ public class ActualizarVentasOpcionControlador {
         inventarioVenta = HelloApplication.getInventarioVenta();
         String nuevoDato = nuevoDatoTxt.getText();
         Venta venta = inventarioVenta.buscarVenta(nombreCliente);
+        boolean actualizado = false;
         for (Venta i: inventarioVenta.getVentas()){
             if (nombreCliente.equals(i.getNombrec())){
                 i.setNombrec(nuevoDato);
                 System.out.println(venta.toString());
+                actualizado = true;
+                break;
             }
+        }
+        if (actualizado) {
+            Alert alerta = new Alert(AlertType.INFORMATION);
+            alerta.setTitle("Actualización Exitosa");
+            alerta.setHeaderText(null);
+            alerta.setContentText("El nombre del cliente ha sido actualizado correctamente.");
+            alerta.showAndWait();
+        } else {
+            Alert alertaError = new Alert(AlertType.ERROR);
+            alertaError.setTitle("Error en la Actualización");
+            alertaError.setHeaderText(null);
+            alertaError.setContentText("No se encontró una venta con este cliente.");
+            alertaError.showAndWait();
         }
     }
 
@@ -117,11 +151,27 @@ public class ActualizarVentasOpcionControlador {
         inventarioVenta = HelloApplication.getInventarioVenta();
         String nuevoDato = nuevoDatoTxt.getText();
         Venta venta = inventarioVenta.buscarVenta(nombreCliente);
+        boolean actualizado= false;
         for (Venta i: inventarioVenta.getVentas()){
             if (nombreCliente.equals(i.getNombrec())){
                 i.setNombrep(nuevoDato);
                 System.out.println(venta.toString());
+                actualizado = true;
+                break;
             }
+        }
+        if (actualizado) {
+            Alert alerta = new Alert(AlertType.INFORMATION);
+            alerta.setTitle("Actualización Exitosa");
+            alerta.setHeaderText(null);
+            alerta.setContentText("El nombre del producto ha sido actualizado correctamente.");
+            alerta.showAndWait();
+        } else {
+            Alert alertaError = new Alert(AlertType.ERROR);
+            alertaError.setTitle("Error en la Actualización");
+            alertaError.setHeaderText(null);
+            alertaError.setContentText("No se encontró la venta para actualizar.");
+            alertaError.showAndWait();
         }
     }
 

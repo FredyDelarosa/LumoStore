@@ -18,6 +18,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+
 
 public class ActualizarProductoOpcionControlador {
 
@@ -63,11 +66,28 @@ public class ActualizarProductoOpcionControlador {
         inventarioRopa = HelloApplication.getInventarioRopa();
         String nuevoDato = nuevoDatoTxt.getText();
         Producto producto = inventarioRopa.buscarProductoNombre(nombreProducto);
+        boolean actualizado = false;
         for (Producto i: inventarioRopa.getProductos()){
             if (nombreProducto.equals(i.getNombre())){
                 i.setNombre(nuevoDato);
                 System.out.println(producto.toString());
+                actualizado = true;
+                break;
             }
+        }
+
+        if (actualizado) {
+            Alert alerta = new Alert(AlertType.INFORMATION);
+            alerta.setTitle("Actualización Exitosa");
+            alerta.setHeaderText(null);
+            alerta.setContentText("El nombre del producto ha sido actualizado correctamente.");
+            alerta.showAndWait();
+        } else {
+            Alert alertaError = new Alert(AlertType.ERROR);
+            alertaError.setTitle("Error en la Actualización");
+            alertaError.setHeaderText(null);
+            alertaError.setContentText("No se encontró el producto para actualizar.");
+            alertaError.showAndWait();
         }
     }
 
@@ -96,11 +116,27 @@ public class ActualizarProductoOpcionControlador {
         inventarioRopa = HelloApplication.getInventarioRopa();
         int nuevoDato = Integer.parseInt(nuevoDatoTxt.getText());
         Producto producto = inventarioRopa.buscarProductoNombre(nombreProducto);
+        boolean actualizado = false;
         for (Producto i: inventarioRopa.getProductos()){
             if (nombreProducto.equals(i.getNombre())){
                 i.setCantidad(nuevoDato);
                 System.out.println(producto.toString());
+                actualizado = true;
+                break;
             }
+        }
+        if (actualizado) {
+            Alert alerta = new Alert(AlertType.INFORMATION);
+            alerta.setTitle("Actualización Exitosa");
+            alerta.setHeaderText(null);
+            alerta.setContentText("La cantidad del producto ha sido actualizado correctamente.");
+            alerta.showAndWait();
+        } else {
+            Alert alertaError = new Alert(AlertType.ERROR);
+            alertaError.setTitle("Error en la Actualización");
+            alertaError.setHeaderText(null);
+            alertaError.setContentText("No se encontró el producto para actualizar.");
+            alertaError.showAndWait();
         }
     }
     @FXML
@@ -108,11 +144,27 @@ public class ActualizarProductoOpcionControlador {
         inventarioRopa = HelloApplication.getInventarioRopa();
         String nuevoDato = nuevoDatoTxt.getText();
         Producto producto = inventarioRopa.buscarProductoNombre(nombreProducto);
+        boolean actualizado = false;
         for (Producto i: inventarioRopa.getProductos()){
             if (nombreProducto.equals(i.getNombre())){
                 i.setCategoria(nuevoDato);
                 System.out.println(producto.toString());
+                actualizado = true;
+                break;
             }
+        }
+        if (actualizado) {
+            Alert alerta = new Alert(AlertType.INFORMATION);
+            alerta.setTitle("Actualización Exitosa");
+            alerta.setHeaderText(null);
+            alerta.setContentText("La categoria del producto ha sido actualizado correctamente.");
+            alerta.showAndWait();
+        } else {
+            Alert alertaError = new Alert(AlertType.ERROR);
+            alertaError.setTitle("Error en la Actualización");
+            alertaError.setHeaderText(null);
+            alertaError.setContentText("No se encontró el producto para actualizar.");
+            alertaError.showAndWait();
         }
     }
 
@@ -121,11 +173,27 @@ public class ActualizarProductoOpcionControlador {
         inventarioRopa = HelloApplication.getInventarioRopa();
         double nuevoDato = Double.parseDouble(nuevoDatoTxt.getText());
         Producto producto = inventarioRopa.buscarProductoNombre(nombreProducto);
+        boolean actualizado = false;
         for (Producto i: inventarioRopa.getProductos()){
             if (nombreProducto.equals(i.getNombre())){
                 i.setPrecio(nuevoDato);
                 System.out.println(producto.toString());
+                actualizado = true;
+                break;
             }
+        }
+        if (actualizado) {
+            Alert alerta = new Alert(AlertType.INFORMATION);
+            alerta.setTitle("Actualización Exitosa");
+            alerta.setHeaderText(null);
+            alerta.setContentText("El precio del producto ha sido actualizado correctamente.");
+            alerta.showAndWait();
+        } else {
+            Alert alertaError = new Alert(AlertType.ERROR);
+            alertaError.setTitle("Error en la Actualización");
+            alertaError.setHeaderText(null);
+            alertaError.setContentText("No se encontró el producto para actualizar.");
+            alertaError.showAndWait();
         }
     }
 

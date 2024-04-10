@@ -20,6 +20,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 public class AgregarVentasControlador {
 
@@ -80,8 +82,17 @@ public class AgregarVentasControlador {
         Venta venta = new Venta(nombre,nombrec,cantidad);
         boolean agregado = inventarioVenta.agregarVenta(venta);
         if (agregado){
-            System.out.println("Agregado");
-            System.out.println(venta.toString());
+            Alert alerta = new Alert(AlertType.INFORMATION);
+            alerta.setTitle("Confirmación de agregado");
+            alerta.setHeaderText(null);
+            alerta.setContentText("Venta agregada correctamente");
+            alerta.showAndWait();
+        }else {
+            Alert alertaError = new Alert(AlertType.ERROR);
+            alertaError.setTitle("Error de Agregado");
+            alertaError.setHeaderText(null);
+            alertaError.setContentText("No se pudo agregar la venta.");
+            alertaError.showAndWait();
         }
     }
 

@@ -19,6 +19,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 public class EliminarVentasControlador {
 
@@ -55,10 +57,21 @@ public class EliminarVentasControlador {
     @FXML
     void BtnEliminar(MouseEvent event) {
         InventarioVenta inventarioVenta = HelloApplication.getInventarioVenta();
+
         String nombreEliminar = nombrecTxt.getText();
         boolean eliminado = inventarioVenta.eliminarVenta(nombreEliminar);
         if (eliminado){
-            System.out.println("Si se elimino");
+            Alert alerta = new Alert(AlertType.INFORMATION);
+            alerta.setTitle("Venta Eliminada");
+            alerta.setHeaderText(null);
+            alerta.setContentText("La venta ha sido eliminada correctamente.");
+            alerta.showAndWait();
+        }else{
+            Alert alertaError = new Alert(AlertType.ERROR);
+            alertaError.setTitle("Error al Eliminar");
+            alertaError.setHeaderText(null);
+            alertaError.setContentText("No se pudo encontrar y eliminar la venta.");
+            alertaError.showAndWait();
         }
     }
 
