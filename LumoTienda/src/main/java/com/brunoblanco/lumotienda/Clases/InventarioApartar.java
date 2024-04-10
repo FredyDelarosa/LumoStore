@@ -10,4 +10,16 @@ public class InventarioApartar {
     }
 
     public boolean apartarProducto(Apartar apartar){return  apartars.add(apartar);}
+
+    public boolean comprarProducto(String nombrep, String proveedor, int cantidad){
+        for (Apartar apartar : apartars){
+            if (apartar.getNombrep().equals(nombrep) && apartar.getProveedor().equals(proveedor)){
+                if (apartar.getCantidad() >= cantidad){
+                    apartar.setCantidad(apartar.getCantidad() - cantidad);
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }

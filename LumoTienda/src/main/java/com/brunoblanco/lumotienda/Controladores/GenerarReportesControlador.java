@@ -13,7 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.text.Text;
+import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 
 public class GenerarReportesControlador {
@@ -25,12 +25,6 @@ public class GenerarReportesControlador {
     private URL location;
 
     @FXML
-    private Pane Etiqueta;
-
-    @FXML
-    private Text EtiquetaText;
-
-    @FXML
     private Label TitleLabel;
 
     @FXML
@@ -40,18 +34,18 @@ public class GenerarReportesControlador {
     private Pane pane;
 
     @FXML
-    void ReporteTextArea(MouseEvent event) {
+    private WebView webView;
 
-    }
+    
 
     @FXML
     void menuButton(MouseEvent event) {
         Stage stage = new Stage();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("MenuReportes.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("MenuProveedor.fxml"));
         try {
             Pane root = fxmlLoader.load();
             Scene scene= new Scene(root);
-            stage.setTitle("Menú Reportes");
+            stage.setTitle("Proveedor");
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
@@ -62,13 +56,18 @@ public class GenerarReportesControlador {
     }
 
     @FXML
+    void onClickBtnLoad(MouseEvent event) {
+
+    }
+
+    @FXML
     void initialize() {
-        assert Etiqueta != null : "fx:id=\"Etiqueta\" was not injected: check your FXML file 'GenerarReportes.fxml'.";
-        assert EtiquetaText != null : "fx:id=\"EtiquetaText\" was not injected: check your FXML file 'GenerarReportes.fxml'.";
         assert TitleLabel != null : "fx:id=\"TitleLabel\" was not injected: check your FXML file 'GenerarReportes.fxml'.";
         assert anchor != null : "fx:id=\"anchor\" was not injected: check your FXML file 'GenerarReportes.fxml'.";
         assert pane != null : "fx:id=\"pane\" was not injected: check your FXML file 'GenerarReportes.fxml'.";
+        assert webView != null : "fx:id=\"webView\" was not injected: check your FXML file 'GenerarReportes.fxml'.";
 
     }
 
 }
+
