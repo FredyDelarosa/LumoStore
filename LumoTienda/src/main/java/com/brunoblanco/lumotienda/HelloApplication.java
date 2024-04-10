@@ -1,5 +1,6 @@
 package com.brunoblanco.lumotienda;
 
+import com.brunoblanco.lumotienda.Clases.InventarioReporte;
 import com.brunoblanco.lumotienda.Clases.InventarioRopa;
 import com.brunoblanco.lumotienda.Clases.InventarioVenta;
 import com.brunoblanco.lumotienda.Clases.InventarioApartar;
@@ -16,11 +17,14 @@ public class HelloApplication extends Application {
     private static InventarioVenta inventarioVenta = new InventarioVenta();
     private static InventarioApartar inventarioApartar = new InventarioApartar();
 
+    private static InventarioReporte inventarioReporte = new InventarioReporte();
+
     public static InventarioRopa getInventarioRopa() {
         return inventarioRopa;
     }
     public static InventarioVenta getInventarioVenta(){return inventarioVenta;}
     public static InventarioApartar getInventarioApartar(){return inventarioApartar;}
+    public static InventarioReporte getInventarioReporte(){return inventarioReporte;}
 
     @Override
     public void start(Stage stage) throws IOException {

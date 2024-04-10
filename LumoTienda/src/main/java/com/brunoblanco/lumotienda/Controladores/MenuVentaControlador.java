@@ -73,11 +73,11 @@ public class MenuVentaControlador {
     @FXML
     void BuscarButton(MouseEvent event) {
         Stage stage = new Stage();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("BuscarVentas.fxml"));
         try {
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("BuscarVentas.fxml"));
             Pane root = fxmlLoader.load();
             Scene scene= new Scene(root);
-            stage.setTitle("Buscar Ventas");
+            stage.setTitle("Agregar Ventas");
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {

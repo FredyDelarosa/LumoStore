@@ -27,16 +27,13 @@
                   <Font name="Times New Roman" size="37.0" />
                </font>
             </Label>
-            <Pane fx:id="EtiquetaDato" layoutX="86.0" layoutY="159.0" prefHeight="71.0" prefWidth="209.0" style="-fx-background-color: #FFCDE8;">
-               <children>
-                  <Text fx:id="EtiquetaDato" layoutX="14.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingrese el nombre del cliente" textAlignment="CENTER" wrappingWidth="188.837890625">
-                     <font>
-                        <Font name="Berlin Sans FB" size="22.0" />
-                     </font>
-                  </Text>
-               </children>
-            </Pane>
             <TextField fx:id="busquedaTxt" layoutX="86.0" layoutY="230.0" prefHeight="40.0" prefWidth="209.0" style="-fx-border-color: #A45D83;" />
+            <Label layoutX="86.0" layoutY="158.0" prefHeight="71.0" prefWidth="209.0" style="-fx-background-color: #FFCDE8;" />
+            <Text layoutX="96.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingrese el nombre del cliente a buscar" textAlignment="CENTER" wrappingWidth="188.837890625">
+               <font>
+                  <Font name="Berlin Sans FB" size="22.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
       <ListView fx:id="lista" layoutX="356.0" layoutY="132.0" prefHeight="216.0" prefWidth="218.0" />
