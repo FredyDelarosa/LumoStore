@@ -55,4 +55,8 @@ public class Venta {
                 ", cantidad=" + cantidad +
                 '}';
     }
+
+    public char[] getTotal() {
+        return getTotal();
+    }
 }

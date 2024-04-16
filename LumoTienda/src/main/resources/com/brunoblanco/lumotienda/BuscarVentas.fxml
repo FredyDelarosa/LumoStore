@@ -27,8 +27,8 @@
                   <Font name="Times New Roman" size="37.0" />
                </font>
             </Label>
-            <TextField fx:id="busquedaTxt" layoutX="86.0" layoutY="230.0" prefHeight="40.0" prefWidth="209.0" style="-fx-border-color: #A45D83;" />
             <Label layoutX="86.0" layoutY="158.0" prefHeight="71.0" prefWidth="209.0" style="-fx-background-color: #FFCDE8;" />
+            <TextField fx:id="busquedaTxt" layoutX="86.0" layoutY="230.0" prefHeight="40.0" prefWidth="209.0" style="-fx-border-color: #A45D83;" />
             <Text layoutX="96.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingrese el nombre del cliente a buscar" textAlignment="CENTER" wrappingWidth="188.837890625">
                <font>
                   <Font name="Berlin Sans FB" size="22.0" />

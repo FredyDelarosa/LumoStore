@@ -62,7 +62,7 @@ public class BuscarProductosControlador {
     @FXML
     void MenuButton(MouseEvent event) {
         Stage stage = new Stage();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("MenuProveedor.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("MenúProductos.fxml"));
         try {
             Pane root = fxmlLoader.load();
             Scene scene= new Scene(root);

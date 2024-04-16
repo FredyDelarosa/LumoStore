@@ -35,4 +35,6 @@ public class Reporte {
         infoReporte.append("Reporte: ").append(report).append("\n");
         return infoReporte.toString();
     }
+
+
 }

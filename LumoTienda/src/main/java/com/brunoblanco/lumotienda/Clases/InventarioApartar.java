@@ -22,4 +22,12 @@ public class InventarioApartar {
         }
         return false;
     }
+
+
+    private InventarioRopa inventarioRopa;
+
+    public InventarioApartar() {
+        this.inventarioRopa = inventarioRopa;
+    }
+
 }
