@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.brunoblanco.lumotienda.Clases.DatabaseConnection;
 import com.brunoblanco.lumotienda.Clases.InventarioRopa;
 import com.brunoblanco.lumotienda.Clases.Producto;
 import com.brunoblanco.lumotienda.HelloApplication;
@@ -18,6 +19,12 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.input.MouseEvent;
 
 //para agregar productos
 public class AgregarProductosControlador {
@@ -42,7 +49,7 @@ public class AgregarProductosControlador {
     @FXML
     private Pane pane;
 
-    @FXML
+   /* @FXML
     void agregarProduct(MouseEvent event) {
         InventarioRopa inventarioRopa = HelloApplication.getInventarioRopa();
         String nombre = nombreTxt.getText();
@@ -62,6 +69,49 @@ public class AgregarProductosControlador {
             alertaError.setTitle("Error de Agregado");
             alertaError.setHeaderText(null);
             alertaError.setContentText("No se pudo agregar el producto.");
+            alertaError.showAndWait();
+        }
+    }*/
+
+    public void agregarProduct(MouseEvent event) {
+        /*obtenemos los valores desde su campo*/
+        String nombre = nombreTxt.getText();
+        double precio = Double.parseDouble(precioTxt.getText());
+        int cantidad = Integer.parseInt(cantidadTxt.getText());
+        String categoria = categoriaTxt.getText();
+
+        /*usamos este comando para enviar los datos a la bd*/
+        String sql = "INSERT INTO productos (nombre, precio, cantidad, categoria) VALUES (?, ?, ?, ?)";
+
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1, nombre);
+            pstmt.setDouble(2, precio);
+            pstmt.setInt(3, cantidad);
+            pstmt.setString(4, categoria);
+
+            int filasAfectadas = pstmt.executeUpdate();
+            if (filasAfectadas > 0) {
+                Alert alerta = new Alert(AlertType.INFORMATION);
+                alerta.setTitle("Confirmación de agregado");
+                alerta.setHeaderText(null);
+                alerta.setContentText("Producto agregado correctamente");
+                alerta.showAndWait();
+            } else {
+                Alert alertaError = new Alert(AlertType.ERROR);
+                alertaError.setTitle("Error de Agregado");
+                alertaError.setHeaderText(null);
+                alertaError.setContentText("No se pudo agregar el producto.");
+                alertaError.showAndWait();
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            Alert alertaError = new Alert(AlertType.ERROR);
+            alertaError.setTitle("Error de Agregado");
+            alertaError.setHeaderText(null);
+            alertaError.setContentText("Hubo un error al agregar el producto a la base de datos.");
             alertaError.showAndWait();
         }
     }

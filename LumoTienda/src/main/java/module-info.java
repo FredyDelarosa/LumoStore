@@ -4,6 +4,7 @@ module com.brunoblanco.lumotienda {
 
     requires org.kordamp.bootstrapfx.core;
     requires javafx.web;
+    requires java.sql;
 
     opens com.brunoblanco.lumotienda to javafx.fxml;
     exports com.brunoblanco.lumotienda;
