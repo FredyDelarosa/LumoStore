@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.brunoblanco.lumotienda.Clases.DatabaseConnection;
 import com.brunoblanco.lumotienda.Clases.InventarioRopa;
 import com.brunoblanco.lumotienda.Clases.Producto;
 import com.brunoblanco.lumotienda.HelloApplication;
@@ -20,6 +21,9 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 
 public class ActualizarProductoOpcionControlador {
@@ -61,7 +65,7 @@ public class ActualizarProductoOpcionControlador {
         this.nombreProducto = nombreProducto;
     }
 
-    @FXML
+    /*@FXML
     void actualizarNombreButton() {
         inventarioRopa = HelloApplication.getInventarioRopa();
         String nuevoDato = nuevoDatoTxt.getText();
@@ -84,6 +88,79 @@ public class ActualizarProductoOpcionControlador {
             alerta.showAndWait();
         } else {
             Alert alertaError = new Alert(AlertType.ERROR);
+            alertaError.setTitle("Error en la Actualización");
+            alertaError.setHeaderText(null);
+            alertaError.setContentText("No se encontró el producto para actualizar.");
+            alertaError.showAndWait();
+        }
+    }*/
+
+
+    @FXML
+    private void actualizarNombreButton(MouseEvent event) {
+        String nuevoDato = nuevoDatoTxt.getText().trim();  // Eliminar espacios en blanco adicionales
+
+        if (nuevoDato.isEmpty()) {
+            Alert alertaError = new Alert(Alert.AlertType.ERROR);
+            alertaError.setTitle("Error de Entrada");
+            alertaError.setHeaderText(null);
+            alertaError.setContentText("El nuevo nombre del producto no puede estar vacío.");
+            alertaError.showAndWait();
+            return;
+        }
+
+        boolean actualizado = false;
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        try {
+            // Obtener la conexión a la base de datos
+            conn = DatabaseConnection.getConnection();
+            String sql = "UPDATE productos SET nombre = ? WHERE nombre = ?";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, nuevoDato);
+            pstmt.setString(2, nombreProducto);
+            int rowsAffected = pstmt.executeUpdate();
+
+            if (rowsAffected > 0) {
+                System.out.println("Producto actualizado en la base de datos.");
+                actualizado = true;
+            } else {
+                System.out.println("No se encontró el producto con el nombre especificado en la base de datos.");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            Alert alertaError = new Alert(Alert.AlertType.ERROR);
+            alertaError.setTitle("Error en la Actualización");
+            alertaError.setHeaderText(null);
+            alertaError.setContentText("Ocurrió un error al actualizar el producto en la base de datos.");
+            alertaError.showAndWait();
+            return;
+        } finally {
+            // Cerrar recursos
+            if (pstmt != null) {
+                try {
+                    pstmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        if (actualizado) {
+            Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+            alerta.setTitle("Actualización Exitosa");
+            alerta.setHeaderText(null);
+            alerta.setContentText("El nombre del producto ha sido actualizado correctamente.");
+            alerta.showAndWait();
+        } else {
+            Alert alertaError = new Alert(Alert.AlertType.ERROR);
             alertaError.setTitle("Error en la Actualización");
             alertaError.setHeaderText(null);
             alertaError.setContentText("No se encontró el producto para actualizar.");
@@ -112,27 +189,82 @@ public class ActualizarProductoOpcionControlador {
 
 
     @FXML
-    void CantidadButton(MouseEvent event){
-        inventarioRopa = HelloApplication.getInventarioRopa();
-        int nuevoDato = Integer.parseInt(nuevoDatoTxt.getText());
-        Producto producto = inventarioRopa.buscarProductoNombre(nombreProducto);
+    private void CantidadButton(MouseEvent event) {
+        String nuevoDatoStr = nuevoDatoTxt.getText().trim();  // Eliminar espacios en blanco adicionales
+
+        if (nuevoDatoStr.isEmpty()) {
+            Alert alertaError = new Alert(Alert.AlertType.ERROR);
+            alertaError.setTitle("Error de Entrada");
+            alertaError.setHeaderText(null);
+            alertaError.setContentText("La cantidad del producto no puede estar vacía.");
+            alertaError.showAndWait();
+            return;
+        }
+
+        int nuevoDato;
+        try {
+            nuevoDato = Integer.parseInt(nuevoDatoStr);
+        } catch (NumberFormatException e) {
+            Alert alertaError = new Alert(Alert.AlertType.ERROR);
+            alertaError.setTitle("Error de Entrada");
+            alertaError.setHeaderText(null);
+            alertaError.setContentText("La cantidad del producto debe ser un número entero válido.");
+            alertaError.showAndWait();
+            return;
+        }
+
         boolean actualizado = false;
-        for (Producto i: inventarioRopa.getProductos()){
-            if (nombreProducto.equals(i.getNombre())){
-                i.setCantidad(nuevoDato);
-                System.out.println(producto.toString());
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        try {
+            // Obtener la conexión a la base de datos
+            conn = DatabaseConnection.getConnection();
+            String sql = "UPDATE productos SET cantidad = ? WHERE nombre = ?";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, nuevoDato);
+            pstmt.setString(2, nombreProducto);
+            int rowsAffected = pstmt.executeUpdate();
+
+            if (rowsAffected > 0) {
+                System.out.println("Producto actualizado en la base de datos.");
                 actualizado = true;
-                break;
+            } else {
+                System.out.println("No se encontró el producto con el nombre especificado en la base de datos.");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            Alert alertaError = new Alert(Alert.AlertType.ERROR);
+            alertaError.setTitle("Error en la Actualización");
+            alertaError.setHeaderText(null);
+            alertaError.setContentText("Ocurrió un error al actualizar el producto en la base de datos.");
+            alertaError.showAndWait();
+            return;
+        } finally {
+            // Cerrar recursos
+            if (pstmt != null) {
+                try {
+                    pstmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
         }
+
         if (actualizado) {
-            Alert alerta = new Alert(AlertType.INFORMATION);
+            Alert alerta = new Alert(Alert.AlertType.INFORMATION);
             alerta.setTitle("Actualización Exitosa");
             alerta.setHeaderText(null);
-            alerta.setContentText("La cantidad del producto ha sido actualizado correctamente.");
+            alerta.setContentText("La cantidad del producto ha sido actualizada correctamente.");
             alerta.showAndWait();
         } else {
-            Alert alertaError = new Alert(AlertType.ERROR);
+            Alert alertaError = new Alert(Alert.AlertType.ERROR);
             alertaError.setTitle("Error en la Actualización");
             alertaError.setHeaderText(null);
             alertaError.setContentText("No se encontró el producto para actualizar.");
@@ -140,27 +272,70 @@ public class ActualizarProductoOpcionControlador {
         }
     }
     @FXML
-    void CategoriaButton(MouseEvent event){
-        inventarioRopa = HelloApplication.getInventarioRopa();
-        String nuevoDato = nuevoDatoTxt.getText();
-        Producto producto = inventarioRopa.buscarProductoNombre(nombreProducto);
+    private void CategoriaButton(MouseEvent event) {
+        String nuevoDato = nuevoDatoTxt.getText().trim();  // Eliminar espacios en blanco adicionales
+
+        if (nuevoDato.isEmpty()) {
+            Alert alertaError = new Alert(Alert.AlertType.ERROR);
+            alertaError.setTitle("Error de Entrada");
+            alertaError.setHeaderText(null);
+            alertaError.setContentText("La categoría del producto no puede estar vacía.");
+            alertaError.showAndWait();
+            return;
+        }
+
         boolean actualizado = false;
-        for (Producto i: inventarioRopa.getProductos()){
-            if (nombreProducto.equals(i.getNombre())){
-                i.setCategoria(nuevoDato);
-                System.out.println(producto.toString());
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        try {
+            // Obtener la conexión a la base de datos
+            conn = DatabaseConnection.getConnection();
+            String sql = "UPDATE productos SET categoria = ? WHERE nombre = ?";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, nuevoDato);
+            pstmt.setString(2, nombreProducto);
+            int rowsAffected = pstmt.executeUpdate();
+
+            if (rowsAffected > 0) {
+                System.out.println("Producto actualizado en la base de datos.");
                 actualizado = true;
-                break;
+            } else {
+                System.out.println("No se encontró el producto con el nombre especificado en la base de datos.");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            Alert alertaError = new Alert(Alert.AlertType.ERROR);
+            alertaError.setTitle("Error en la Actualización");
+            alertaError.setHeaderText(null);
+            alertaError.setContentText("Ocurrió un error al actualizar el producto en la base de datos.");
+            alertaError.showAndWait();
+            return;
+        } finally {
+            // Cerrar recursos
+            if (pstmt != null) {
+                try {
+                    pstmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
         }
+
         if (actualizado) {
-            Alert alerta = new Alert(AlertType.INFORMATION);
+            Alert alerta = new Alert(Alert.AlertType.INFORMATION);
             alerta.setTitle("Actualización Exitosa");
             alerta.setHeaderText(null);
-            alerta.setContentText("La categoria del producto ha sido actualizado correctamente.");
+            alerta.setContentText("La categoría del producto ha sido actualizada correctamente.");
             alerta.showAndWait();
         } else {
-            Alert alertaError = new Alert(AlertType.ERROR);
+            Alert alertaError = new Alert(Alert.AlertType.ERROR);
             alertaError.setTitle("Error en la Actualización");
             alertaError.setHeaderText(null);
             alertaError.setContentText("No se encontró el producto para actualizar.");
@@ -169,27 +344,82 @@ public class ActualizarProductoOpcionControlador {
     }
 
     @FXML
-    void PrecioButton(MouseEvent event) {
-        inventarioRopa = HelloApplication.getInventarioRopa();
-        double nuevoDato = Double.parseDouble(nuevoDatoTxt.getText());
-        Producto producto = inventarioRopa.buscarProductoNombre(nombreProducto);
+    private void PrecioButton(MouseEvent event) {
+        String nuevoDatoStr = nuevoDatoTxt.getText().trim();  // Eliminar espacios en blanco adicionales
+
+        if (nuevoDatoStr.isEmpty()) {
+            Alert alertaError = new Alert(Alert.AlertType.ERROR);
+            alertaError.setTitle("Error de Entrada");
+            alertaError.setHeaderText(null);
+            alertaError.setContentText("El precio del producto no puede estar vacío.");
+            alertaError.showAndWait();
+            return;
+        }
+
+        double nuevoDato;
+        try {
+            nuevoDato = Double.parseDouble(nuevoDatoStr);
+        } catch (NumberFormatException e) {
+            Alert alertaError = new Alert(Alert.AlertType.ERROR);
+            alertaError.setTitle("Error de Entrada");
+            alertaError.setHeaderText(null);
+            alertaError.setContentText("El precio del producto debe ser un número válido.");
+            alertaError.showAndWait();
+            return;
+        }
+
         boolean actualizado = false;
-        for (Producto i: inventarioRopa.getProductos()){
-            if (nombreProducto.equals(i.getNombre())){
-                i.setPrecio(nuevoDato);
-                System.out.println(producto.toString());
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        try {
+            // Obtener la conexión a la base de datos
+            conn = DatabaseConnection.getConnection();
+            String sql = "UPDATE productos SET precio = ? WHERE nombre = ?";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setDouble(1, nuevoDato);
+            pstmt.setString(2, nombreProducto);
+            int rowsAffected = pstmt.executeUpdate();
+
+            if (rowsAffected > 0) {
+                System.out.println("Producto actualizado en la base de datos.");
                 actualizado = true;
-                break;
+            } else {
+                System.out.println("No se encontró el producto con el nombre especificado en la base de datos.");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            Alert alertaError = new Alert(Alert.AlertType.ERROR);
+            alertaError.setTitle("Error en la Actualización");
+            alertaError.setHeaderText(null);
+            alertaError.setContentText("Ocurrió un error al actualizar el producto en la base de datos.");
+            alertaError.showAndWait();
+            return;
+        } finally {
+            // Cerrar recursos
+            if (pstmt != null) {
+                try {
+                    pstmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
         }
+
         if (actualizado) {
-            Alert alerta = new Alert(AlertType.INFORMATION);
+            Alert alerta = new Alert(Alert.AlertType.INFORMATION);
             alerta.setTitle("Actualización Exitosa");
             alerta.setHeaderText(null);
             alerta.setContentText("El precio del producto ha sido actualizado correctamente.");
             alerta.showAndWait();
         } else {
-            Alert alertaError = new Alert(AlertType.ERROR);
+            Alert alertaError = new Alert(Alert.AlertType.ERROR);
             alertaError.setTitle("Error en la Actualización");
             alertaError.setHeaderText(null);
             alertaError.setContentText("No se encontró el producto para actualizar.");
